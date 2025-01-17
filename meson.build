@@ -5,6 +5,9 @@ project(
     meson_version: '>= 0.59.0'
 )
 
+# Install under different name so may be run alongside original
+install_name = 'com.github.jeremypw.dogfood-files-7'
+
 #
 # Meson module imports
 #
@@ -14,10 +17,10 @@ i18n = import('i18n')
 #
 # Define the global directories and variables
 #
-plugin_dir = join_paths(get_option('prefix'), get_option('libdir'), meson.project_name(), 'plugins')
+plugin_dir = join_paths(get_option('prefix'), get_option('libdir'),install_name, 'plugins')
 
 add_project_arguments(
-    ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
+    ['-DGETTEXT_PACKAGE="' +install_name + '"',
     '-DHANDY_USE_UNSTABLE_API',
     '-w'],
     language:'c'
@@ -87,8 +90,8 @@ config_data = configuration_data()
 config_data.set('plugin_dir', plugin_dir)
 config_data.set('version', meson.project_version())
 config_data.set('testdata_dir', join_paths(meson.project_source_root(), 'data', 'tests'))
-config_data.set('app_name', meson.project_name())
-config_data.set('gettext_package', meson.project_name())
+config_data.set('app_name',install_name)
+config_data.set('gettext_package',install_name)
 config_data.set('locale_dir', join_paths(get_option('prefix'), get_option('localedir')))
 
 config_file = configure_file(

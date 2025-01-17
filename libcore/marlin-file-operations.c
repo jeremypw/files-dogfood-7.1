@@ -39,7 +39,7 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "pantheon-files-core.h"
+#include "com.github.jeremypw.dogfood-files-7-core.h"
 
 #define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
 //#define NSEC_PER_SEC 1000000000

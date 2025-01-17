@@ -35,13 +35,14 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 /* This is being replaced by storing color info in file metadata but will be kept for a while to provide
  * transparent transfer of data */
-[DBus (name = "io.elementary.files.db")]
+[DBus (name = "com.github.jeremypw.files.db")]
 public class MarlinTags : Object {
     private const string CMD = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) " +
                                "VALUES ('%s', '%s', %s, %s, '%s');\n";
     protected static Sqlite.Database db;
 
     public MarlinTags () {
+    warning ("MarlinTags");
         try {
             open_marlin_db ();
         } catch (GLib.Error e) {
@@ -50,6 +51,7 @@ public class MarlinTags : Object {
     }
 
     protected static void fatal (string op, int res) {
+    warning ("fatal");
         error ("%s: [%d] %s", op, res, db.errmsg ());
     }
 
@@ -64,8 +66,9 @@ public class MarlinTags : Object {
     }
 
     public bool open_marlin_db () throws GLib.DBusError, GLib.IOError {
+    warning ("open marlin db");
         File home_dir = File.new_for_path (Environment.get_home_dir ());
-        File data_dir = home_dir.get_child (".config").get_child ("marlin");
+        File data_dir = home_dir.get_child (".config").get_child ("marlin-testing");
 
         try {
             if (!data_dir.query_exists (null)) {
@@ -84,6 +87,7 @@ public class MarlinTags : Object {
     }
 
     private bool open_db (string dbpath) {
+warning ("open db");
         int rc = Sqlite.Database.open_v2 (dbpath, out db, Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE, null);
 
         if (rc != Sqlite.OK) {

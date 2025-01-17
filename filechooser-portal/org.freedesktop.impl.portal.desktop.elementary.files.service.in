@@ -1,4 +1,4 @@
 [D-BUS Service]
-Name=org.freedesktop.impl.portal.desktop.elementary.files
-Exec=@libexecdir@/io.elementary.files.xdg-desktop-portal
-SystemdService=io.elementary.files.xdg-desktop-portal.service
+Name=org.freedesktop.impl.portal.desktop.jeremypw.files
+Exec=@libexecdir@/com.github.jeremypw.dogfood-files-7.xdg-desktop-portal
+SystemdService=com.github.jeremypw.dogfood-files-7.xdg-desktop-portal.service

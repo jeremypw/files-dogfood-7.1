@@ -513,10 +513,10 @@ public class Files.FileChooserPortal : Object {
         var loop = new MainLoop (null, false);
         var owner_id = Bus.own_name (
             BusType.SESSION,
-            "org.freedesktop.impl.portal.desktop.elementary.files",
+            "org.freedesktop.impl.portal.desktop.jeremypw.files",
             BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? BusNameOwnerFlags.REPLACE : 0),
             on_bus_acquired,
-            () => debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"),
+            () => debug ("org.freedesktop.impl.portal.desktop.jeremypw.files acquired"),
             () => loop.quit ()
         );
         loop.run ();

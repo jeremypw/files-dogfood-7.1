@@ -1,7 +1,7 @@
 libexec_dir = join_paths(get_option('prefix'), get_option ('libexecdir'))
 
 executable(
-    'io.elementary.files.xdg-desktop-portal',
+    'com.github.jeremypw.dogfood-files-7.xdg-desktop-portal',
     'ExternalWindow.vala',
     'FileChooserChoice.vala',
     'FileChooserDialog.vala',
@@ -32,7 +32,7 @@ if systemd_systemduserunitdir != 'no'
 
   configure_file(
       input: 'io.elementary.files.xdg-desktop-portal.service.in',
-      output: '@BASENAME@',
+      output: 'com.github.jeremypw.dogfood-files-7.xdg-desktop-portal.service',
       configuration: conf_data,
       install: true,
       install_dir: systemd_systemduserunitdir
@@ -40,13 +40,13 @@ if systemd_systemduserunitdir != 'no'
 endif
 
 install_data(
-    'io.elementary.files.portal',
+    'com.github.jeremypw.dogfood-files-7.portal',
     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'xdg-desktop-portal', 'portals')
 )
 
 configure_file(
     input: 'org.freedesktop.impl.portal.desktop.elementary.files.service.in',
-    output: '@BASENAME@',
+    output: 'org.freedesktop.impl.portal.desktop.jeremypw.files.service',
     configuration: conf_data,
     install: true,
     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'dbus-1', 'services')
@@ -65,6 +65,6 @@ if (flatpak_builder.found())
             '--force-clean'
         ],
         capture: true,
-        output: 'io.elementary.Files.PortalTester'
+        output: 'com.github.jeremypw.dogfood-files-7.PortalTester'
     )
 endif

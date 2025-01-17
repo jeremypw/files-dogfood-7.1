@@ -20,22 +20,24 @@
 ***/
 
     void on_bus_aquired (DBusConnection conn, string n) {
+    warning ("Daemon main on bus acquired");
         try {
-            string name = "/io/elementary/files/db";
+            string name = "/com/github/jeremypw/files/db";
             var object = new MarlinTags ();
             conn.register_object (name, object);
-            debug ("MarlinTags object registered with dbus connection name %s", name);
+            warning ("MarlinTags object registered with dbus connection name %s", name);
         } catch (IOError e) {
             error ("Could not register MarlinTags service");
         }
     }
 
     void on_fm1_bus_aquired (DBusConnection conn, string n) {
+    warning ("on fm1 bus acquired");
         try {
             string name = "/org/freedesktop/FileManager1";
             var object = new FileManager1 ();
             conn.register_object (name, object);
-            debug ("FileManager1 object registered with dbus connection name %s", name);
+            warning ("FileManager1 object registered with dbus connection name %s", name);
         } catch (IOError e) {
             error ("Could not register FileManager1 service");
         }
@@ -46,11 +48,16 @@
 
     void on_name_lost (DBusConnection connection, string name) {
         critical ("Name %s was not acquired", name);
+        if (name.contains ("FileManager1")) {
+            // Do not exit as FileManager1 name may be provided by another app.
+            return;
+        }
+
         exit (-1);
     }
 
     void main () {
-        Bus.own_name (BusType.SESSION, "io.elementary.files.db", BusNameOwnerFlags.NONE,
+        Bus.own_name (BusType.SESSION, "com.github.jeremypw.files.db", BusNameOwnerFlags.NONE,
                       on_bus_aquired,
                       () => {},
                       on_name_lost);

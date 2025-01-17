@@ -1,10 +1,10 @@
 project(
-    'io.elementary.Files.PortalTester',
+    'com.github.jeremypw.dogfood-files-7.PortalTester',
     'c', 'vala'
 )
 
 executable(
-    'io.elementary.Files.PortalTester',
+    'com.github.jeremypw.dogfood-files-7.PortalTester',
     'PortalTester.vala',
     dependencies: [
         dependency('gtk+-3.0', version: '>=3.20')

@@ -2,12 +2,12 @@
 Version=1.5
 Type=Application
 
-Name=Files
+Name=Dogfood-files-7
 Comment=Browse your files
 Categories=System;
 Keywords=folder;manager;explore;disk;filesystem;
 
-Icon=system-file-manager
+Icon=missing-image
 Exec=@exec_name@ %U
 SingleMainWindow=false
 StartupNotify=true

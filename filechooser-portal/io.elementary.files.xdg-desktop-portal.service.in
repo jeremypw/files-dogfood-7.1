@@ -3,5 +3,5 @@ Description=Portal service (Pantheon Files)
 
 [Service]
 Type=dbus
-BusName=org.freedesktop.impl.portal.desktop.elementary.files
-ExecStart=@libexecdir@/io.elementary.files.xdg-desktop-portal
+BusName=org.freedesktop.impl.portal.desktop.jeremypw.files
+ExecStart=@libexecdir@/com.github.jeremypw.dogfood-files-7.xdg-desktop-portal

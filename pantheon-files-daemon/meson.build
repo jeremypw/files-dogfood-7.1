@@ -5,7 +5,7 @@ pantheon_files_daemon_files = files(
 )
 
 executable(
-    meson.project_name() + '-daemon',
+   install_name + '-daemon',
     pantheon_files_daemon_files,
 
     dependencies : [

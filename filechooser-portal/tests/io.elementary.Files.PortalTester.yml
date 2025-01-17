@@ -1,8 +1,8 @@
-app-id: io.elementary.Files.PortalTester
+app-id: com.github.jeremypw.dogfood-files-7.PortalTester
 runtime: io.elementary.Platform
 runtime-version: '6'
 sdk: io.elementary.Sdk
-command: io.elementary.Files.PortalTester
+command: com.github.jeremypw.dogfood-files-7.PortalTester
 finish-args:
   # X11 + XShm access
   - --share=ipc

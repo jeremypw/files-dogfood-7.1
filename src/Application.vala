@@ -46,10 +46,10 @@ public class Files.Application : Gtk.Application {
 
     static construct {
         /* GSettings parameters */
-        app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
+        app_settings = new Settings ("com.github.jeremypw.dogfood-files-7.preferences");
+        icon_view_settings = new Settings ("com.github.jeremypw.dogfood-files-7.icon-view");
+        list_view_settings = new Settings ("com.github.jeremypw.dogfood-files-7.list-view");
+        column_view_settings = new Settings ("com.github.jeremypw.dogfood-files-7.column-view");
     }
 
     construct {
@@ -79,7 +79,7 @@ public class Files.Application : Gtk.Application {
 
     protected override int handle_local_options (GLib.VariantDict options) {
         if ("version" in options) {
-            stdout.printf ("io.elementary.files %s\n", Config.VERSION);
+            stdout.printf ("com.github.jeremypw.dogfood-files-7 %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 
@@ -87,7 +87,7 @@ public class Files.Application : Gtk.Application {
         if (Files.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
             stderr.printf (
                 _("Error: Running Files as root using sudo is not possible.") + " " +
-                _("Please use the command: io.elementary.files-pkexec [folder]")
+                _("Please use the command: com.github.jeremypw.dogfood-files-7-pkexec [folder]")
             );
 
             return Posix.EXIT_FAILURE;

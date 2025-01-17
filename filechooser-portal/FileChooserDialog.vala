@@ -165,7 +165,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
         setup_chooser ();
 
-        settings = new Settings ("io.elementary.files.file-chooser");
+        settings = new Settings ("com.github.jeremypw.dogfood-files-7.file-chooser");
         int width, height;
         settings.get ("window-size", "(ii)", out width, out height);
 

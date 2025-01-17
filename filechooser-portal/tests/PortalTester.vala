@@ -1,7 +1,7 @@
 public class PortalTester : Gtk.Application {
     public PortalTester () {
         Object (
-            application_id: "io.elementary.Files.PortalTester",
+            application_id: "com.github.jeremypw.dogfood-files-7.PortalTester",
             flags: ApplicationFlags.FLAGS_NONE
         );
     }
