@@ -7,7 +7,7 @@ Comment=Browse your files
 Categories=System;
 Keywords=folder;manager;explore;disk;filesystem;
 
-Icon=missing-image
+Icon=preferences-system-search-symbolic
 Exec=@exec_name@ %U
 SingleMainWindow=false
 StartupNotify=true
