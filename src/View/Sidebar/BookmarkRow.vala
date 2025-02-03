@@ -51,8 +51,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private bool valid = true; //Set to false if scheduled for removal
     private Gtk.Image icon;
-
-    private Files.File? target_file = null;
     private List<GLib.File> drop_file_list = null;
     private string? drop_text = null;
     private bool drop_occurred = false;
@@ -60,6 +58,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private Gtk.EventControllerKey key_controller;
     private Gtk.GestureMultiPress button_controller;
 
+    protected Files.File? target_file = null;
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
     protected Gtk.Stack label_stack;
@@ -539,7 +538,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                               y > row_height - 1;
 
                     // When dropping onto a row, determine what actions are possible
-                    if (!reveal && drop_file_list != null) {
+                    if (target_file != null && !reveal && drop_file_list != null) {
                         Files.DndHandler.file_accepts_drop (
                             target_file,
                             drop_file_list,
