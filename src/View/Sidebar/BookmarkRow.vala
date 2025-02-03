@@ -111,6 +111,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     construct {
+        target_file = Files.File.get_by_uri (uri);
+        target_file.ensure_query_info ();
+
         /* If put margin on the row then drag and drop does not work when over the margin so we put
          * the margin on the content grid */
         //Set a fallback tooltip to stop category tooltip appearing inappropriately
@@ -367,29 +370,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     /* DRAG DROP IMPLEMENTATION */
-
-    // This gets called when the location is mounted or unmounted.
-    protected void set_up_target_file_and_drop_actions () {
-        if (uri != "") {
-            target_file = Files.File.get_by_uri (uri);
-            target_file.ensure_query_info ();
-            Gtk.drag_dest_set (
-                this,
-                Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
-                dest_targets,
-                Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
-            );
-        } else {
-            target_file = null;
-            Gtk.drag_dest_set (
-                this,
-                Gtk.DestDefaults.MOTION,
-                null,
-                Gdk.DragAction.DEFAULT
-            );
-        }
-    }
-
     private void set_up_drag () {
         if (pinned) { //Pinned items cannot be dragged
             return;
@@ -452,6 +432,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         drop_revealer.show_all ();
 
         content_grid.attach (drop_revealer, 0, 1);
+
+        Gtk.drag_dest_set (
+            this,
+            Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
+            dest_targets,
+            Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+        );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
             drop_text = null;
