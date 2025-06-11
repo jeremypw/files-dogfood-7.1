@@ -1,4 +1,4 @@
-pantheon_files_core_name = 'pantheon-files-core'
+pantheon_files_core_name = 'pantheon-files-testing-core'
 
 pantheon_files_core_deps = [
     common_deps,
@@ -100,8 +100,8 @@ pantheon_files_core_pkgconfig = pkg.generate(
     pantheon_files_core_library,
     subdirs: pantheon_files_core_name,
     filebase: pantheon_files_core_name,
-    name: 'elementary Files Core Library',
-    description: 'Core library used by io.elementary.files and by io.elementary.file-chooser',
+    name: 'elementary Files Core Testing Library',
+    description: 'Core library used by com.github.jeremypw.files-testing',
     version: meson.project_version(),
 )
 

@@ -46,7 +46,7 @@ install_data(
 
 configure_file(
     input: 'org.freedesktop.impl.portal.desktop.elementary.files.service.in',
-    output: '@BASENAME@',
+    output: 'org.freedesktop.impl.portal.desktop.io.elementary.files.service',
     configuration: conf_data,
     install: true,
     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'dbus-1', 'services')

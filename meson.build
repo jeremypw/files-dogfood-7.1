@@ -1,5 +1,5 @@
 project(
-    'io.elementary.files',
+    'com.github.jeremypw.files-testing',
     'vala', 'c',
     version: '7.1.2',
     meson_version: '>= 0.59.0'
@@ -112,9 +112,9 @@ resources = gnome.compile_resources(
 subdir('libcore')
 subdir('src')
 subdir('data')
-subdir('pantheon-files-daemon')
+# subdir('pantheon-files-daemon')
 subdir('plugins')
-subdir('filechooser-portal')
+# subdir('filechooser-portal')
 subdir('po')
 
 gnome.post_install(

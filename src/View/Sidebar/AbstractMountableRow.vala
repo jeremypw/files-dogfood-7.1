@@ -105,7 +105,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     static construct {
         volume_monitor = VolumeMonitor.@get ();
         devicerow_provider = new Gtk.CssProvider ();
-        devicerow_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
+        devicerow_provider.load_from_resource ("/com/github/jeremypw/files-testing/DiskRenderer.css");
     }
 
     construct {

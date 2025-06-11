@@ -70,8 +70,8 @@ namespace PF {
     }
 
     namespace Sound {
-        const string APP_TITLE = "Files";
-        const string APP_ID = "io.elementary.files";
+        const string APP_TITLE = "Files Testing";
+        const string APP_ID = "com.github.jeremypw.files-testing";
         const string APP_LOGO = "system-file-manager";
         public const string THEME = "elementary";
         public const string DELETE = "trash-empty";

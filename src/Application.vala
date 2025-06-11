@@ -46,10 +46,10 @@ public class Files.Application : Gtk.Application {
 
     static construct {
         /* GSettings parameters */
-        app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
+        app_settings = new Settings ("com.github.jeremypw.files-testing.preferences");
+        icon_view_settings = new Settings ("com.github.jeremypw.files-testing.icon-view");
+        list_view_settings = new Settings ("com.github.jeremypw.files-testing.list-view");
+        column_view_settings = new Settings ("com.github.jeremypw.files-testing.column-view");
     }
 
     construct {
@@ -79,7 +79,7 @@ public class Files.Application : Gtk.Application {
 
     protected override int handle_local_options (GLib.VariantDict options) {
         if ("version" in options) {
-            stdout.printf ("io.elementary.files %s\n", Config.VERSION);
+            stdout.printf ("com.github.jeremypw.files-testing %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 
@@ -87,7 +87,7 @@ public class Files.Application : Gtk.Application {
         if (Files.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
             stderr.printf (
                 _("Error: Running Files as root using sudo is not possible.") + " " +
-                _("Please use the command: io.elementary.files-pkexec [folder]")
+                _("Please use the command: com.github.jeremypw.files-testing-pkexec [folder]")
             );
 
             return Posix.EXIT_FAILURE;
@@ -153,7 +153,7 @@ public class Files.Application : Gtk.Application {
 #endif
 
         var app_provider = new Gtk.CssProvider ();
-        app_provider.load_from_resource ("/io/elementary/files/Application.css");
+        app_provider.load_from_resource ("/com/github/jeremypw/files-testing/Application.css");
 
         Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 

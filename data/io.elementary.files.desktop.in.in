@@ -2,12 +2,11 @@
 Version=1.5
 Type=Application
 
-Name=Files
-Comment=Browse your files
+Name=Files Testing
+Comment=For testing unmerged PRs
 Categories=System;
 Keywords=folder;manager;explore;disk;filesystem;
 
-Icon=system-file-manager
 Exec=@exec_name@ %U
 SingleMainWindow=false
 StartupNotify=true
